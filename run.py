@@ -70,12 +70,12 @@ def registration():
     it's registration function, 
     system register users for voting, and checking for dublicate NID, and age should be older then 18
     """
-
+    print("\n")
     print('Registration Form')
     print('You need the below information for registration \nName, NID, DOB(year), Password')
     
     user = []
-    name = input('Please Enter your Name:\n')
+    name = input('\nPlease Enter your Name:\n')
     nid = int(input('Please Enter your National ID (NID):\n'))
     # checking for dubalicate NID, this system can not Accept dublicate NID
     saved_nids = users.col_values(2)
@@ -83,6 +83,7 @@ def registration():
     int_saved_nids = [int(num) for num in saved_nids]
     # check for dublicate NID
     while(nid in int_saved_nids):
+        print("\n")
         print('Sorry, This NID already registrated, we can not accept dublicate')
         nid = int(input('Please Enter your own National ID (NID):\n'))
     
@@ -94,7 +95,7 @@ def registration():
     user.append(dob)
     user.append(password)
     users.append_row(user)
-
+    print("\n")
     print(f"Registration has been successfuly done.")
     login()
 
@@ -107,7 +108,7 @@ def check_age(dob):
     year = datetime.date.today().year
     age = year - dob
     if(age <= 18 ):
-        print(f"Sorry, only above 18 years old  can vote.\n Your age is {age}")
+        print(f"\nSorry, only above 18 years old  can vote.\n Your age is {age}")
         has_user()
 
 def candidates_list():
@@ -118,6 +119,7 @@ def candidates_list():
     candidate_code = candidate_work_sheet.col_values(1)
     candidate_name = candidate_work_sheet.col_values(2)
 
+    print("\n")
     print(f'Please select {candidate_code}')
     for code, name in zip(candidate_code, candidate_name):
         print(f"Select {code} For {name}")
@@ -136,17 +138,22 @@ def candidates_list():
     for code in candidate_code:
         vote_count(code)
 
+    # display total vote from voters 
     print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}")
 
 def vote_count(code):
+    """
+    count and display vote for every candidate
+    """
     votes = vots_work_sheet.col_values(1)
     votes_counts = Counter(votes)
     print(f"Total vote for {code} is {votes_counts[code]}")
 
 
 
+def main():
+    welcome_msg()
+    has_user()
+# candidates_list()
 
-# welcome_msg()
-# has_user()
-candidates_list()
-
+main()
