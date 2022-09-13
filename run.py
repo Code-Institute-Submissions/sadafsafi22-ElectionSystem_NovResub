@@ -60,12 +60,16 @@ def registration():
     user = []
     name = input('Please Enter your Name:\n')
     nid = int(input('Please Enter your National ID (NID):\n'))
-
+    
 
     dob = int(input('Please Enter Year of your Birth:\n'))
     password = input('Plase Enter your Password:\n')
 
-    
+    # check if the age is older then 18 
+    age = 2022 - dob
+    if(age <= 18 ):
+        print(f"Sorry, only above 18 years old  can vote.\n Your age is {age}")
+        has_user()
 
     user.append(name)
     user.append(nid)
