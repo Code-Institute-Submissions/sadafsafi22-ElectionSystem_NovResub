@@ -30,31 +30,43 @@ def has_user():
     """
 
     while True:
-        has_user = int(input("1. Login \n2. Registration \nPlease Select one(1/2):"))
-        if(has_user == 1):
-            login()
-            break
-        elif(has_user == 2):
-            registration()
-            break
-        else:
-            print("You can Select only 1/2")
-            continue
+        has_user = input("1. Login \n2. Registration\n3. Show Results \nPlease Select one(1/2/3):")
+        if(validate_data(has_user)):
+            print("Data is valid!")
+            has_user = int(has_user)
+            if(has_user == 1):
+                login()
+                break
+            elif(has_user == 2):
+                registration()
+                break
+            elif(has_user == 3):
+                show_results()
+                break
+            
 
+def validate_data(data):
+    try:
+        if(int(data) not in [1,2,3]):
+            raise ValueError(f'You can enter only (1/2/3), you entered {data}')
+    except ValueError as e:
+        print(f"Invalid data: {e}, Please try again.\n")
+        return False
+
+    return True
 
 def login():
     """
-    Request for user to Enter NID and password, 
+    Request for user to enter NID and password, 
     after checking allow users to go voting section
     """
     print('Welcome to login section \n')
-    NID = int(input("Please Enter NID : \n"))
-    password = input("please Enter your Password : \n")
+    NID = int(input("Please enter NID : \n"))
+    password = input("please enter your Password : \n")
     NIDs = users.col_values(2)
     NIDs.remove('NID')
     NIDs = [int(num) for num in NIDs]
     passwords = users.col_values(4)
-    # print(usernames,password)
 
     while(not((NID in NIDs) and (password in passwords))):
         print(" Sorry NID and password incorrect please re-enter for Validation ")
@@ -68,15 +80,16 @@ def login():
 def registration():
     """ 
     it's registration function, 
-    system register users for voting, and checking for dublicate NID, and age should be older then 18
+    system register users for voting, and checking for dublicate National ID(NID), and age should be older then 18
     """
     print("\n")
     print('Registration Form')
-    print('You need the below information for registration \nName, NID, DOB(year), Password')
+    print('You need the below information for registration \nName, National ID(NID), DOB(year), Password')
     
     user = []
-    name = input('\nPlease Enter your Name:\n')
-    nid = int(input('Please Enter your National ID (NID):\n'))
+    name = input('\nPlease enter your Name:\n')
+    nid = int(input('Please enter your own National ID (NID):\n'))
+
     # checking for dubalicate NID, this system can not Accept dublicate NID
     saved_nids = users.col_values(2)
     saved_nids.remove('NID')
@@ -85,21 +98,19 @@ def registration():
     while(nid in int_saved_nids):
         print("\n")
         print('Sorry, This NID already registrated, we can not accept dublicate')
-        nid = int(input('Please Enter your own National ID (NID):\n'))
+        nid = int(input('Please enter your own National ID (NID):\n'))
     
-    dob = int(input('Please Enter Year of your Birth:\n'))
+    dob = int(input('Please enter Year of your Birth:\n'))
     check_age(dob)
-    password = input('Plase Enter your Password:\n')
+    password = input('Plase enter your Password:\n')
     user.append(name)
     user.append(nid)
     user.append(dob)
     user.append(password)
     users.append_row(user)
     print("\n")
-    print(f"Registration has been successfuly done.")
+    print("Registration has been successfuly done.\n")
     login()
-
-    
 
 def check_age(dob):
     """
@@ -114,7 +125,8 @@ def check_age(dob):
 def candidates_list():
     """
     Here we list Candidates which is retriveing condidate data from Excel sheet
-    and allow users to select there mentioned Candidate
+    and allow users to select their mentioned Candidate
+    using while for validation and user can select only Code of mentioned candidate 
     """
     candidate_code = candidate_work_sheet.col_values(1)
     candidate_name = candidate_work_sheet.col_values(2)
@@ -125,22 +137,19 @@ def candidates_list():
         print(f"Select {code} For {name}")
 
     selected_candidate = input('which one is your consider candidate? \n')
-    while(selected_candidate not in candidate_code):
+    # using while for validation,
+    while(selected_candidate.upper() not in candidate_code):
         print('Please make sure you select Correctly:\n')
         selected_candidate = input('which one is your consider candidate? \n')
         
-    
     new_vote = []
     # print(f'you select {selected_candidate}')
-    new_vote.append(selected_candidate)
+    new_vote.append(selected_candidate.upper())
     vots_work_sheet.append_row(new_vote)
+    print("Your vote was successfully casted\n\n")
+
+    has_user()
     
-    for code in candidate_code:
-        vote_count(code)
-
-    # display total vote from voters 
-    print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}")
-
 def vote_count(code):
     """
     count and display vote for every candidate
@@ -149,11 +158,18 @@ def vote_count(code):
     votes_counts = Counter(votes)
     print(f"Total vote for {code} is {votes_counts[code]}")
 
+def show_results():
+    """
+    Display the result of voting after selected by user
+    """
+    candidate_code = candidate_work_sheet.col_values(1)
+    for code in candidate_code:
+        vote_count(code)
 
+    # display total vote from voters
+    print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}")
 
 def main():
     welcome_msg()
     has_user()
-# candidates_list()
-
 main()
