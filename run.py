@@ -67,7 +67,7 @@ def login():
     NIDs.remove('NID')
     NIDs = [int(num) for num in NIDs]
     passwords = users.col_values(4)
-
+    
     while(not((NID in NIDs) and (password in passwords))):
         print(" Sorry NID and password incorrect please re-enter for Validation ")
         NID = int(input("Please enter your NID : \n"))
@@ -96,8 +96,7 @@ def registration():
     int_saved_nids = [int(num) for num in saved_nids]
     # check for dublicate NID
     while(nid in int_saved_nids):
-        print("\n")
-        print('Sorry, This NID already registrated, we can not accept dublicate')
+        print(f'\n \033[1m  Sorry \033[0m , This {nid} NID already registrated, we can not accept dublicate \n')
         nid = int(input('Please enter your own National ID (NID):\n'))
     
     dob = int(input('Please enter Year of your Birth:\n'))
@@ -108,8 +107,7 @@ def registration():
     user.append(dob)
     user.append(password)
     users.append_row(user)
-    print("\n")
-    print("Registration has been successfuly done.\n")
+    print("\n \033[1m Registration has been successfuly done. \033[0m \n")
     login()
 
 def check_age(dob):
@@ -119,7 +117,7 @@ def check_age(dob):
     year = datetime.date.today().year
     age = year - dob
     if(age <= 18 ):
-        print(f"\nSorry, only above 18 years old  can vote.\n Your age is {age}")
+        print(f"\nSorry, only above 18 years old  can vote.\n Your age is {age}\n\n")
         has_user()
 
 def candidates_list():
@@ -167,7 +165,9 @@ def show_results():
         vote_count(code)
 
     # display total vote from voters
-    print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}")
+    print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}\n")
+    
+    has_user()
 
 def main():
     welcome_msg()
