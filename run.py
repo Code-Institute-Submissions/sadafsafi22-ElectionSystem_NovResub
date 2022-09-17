@@ -82,10 +82,11 @@ def login():
 def registration():
     """ 
     it's registration function, 
-    system register users for voting, and checking for dublicate National ID(NID), and age should be older then 18
+    system register users for voting, and checking for dublicate National ID(NID), 
+    and age should be older then 18
     """
     print("\n")
-    print('Registration Form')
+    print('\n  \033[1m Registration Form \033[0m \n')
     print('You need the below information for registration \nName, National ID(NID), DOB(year), Password')
     
     user = []
@@ -168,10 +169,10 @@ def show_results():
 
     # display total vote from voters
     print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}\n")
-    
     has_user()
 
 def main():
     welcome_msg()
     has_user()
+
 main()
