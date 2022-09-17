@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import datetime
 from collections import Counter
+from title import title_art
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -20,7 +21,8 @@ vots_work_sheet  = SHEET.worksheet('vots')
 
 
 def welcome_msg():
-    print('\n \033[1m Welcome to Election Voting System! \033[0m \n')
+    print('\033[95m'+title_art)
+    print('\n \033[1m \033[94m Welcome to Election Voting System! \033[0m \n')
 
 def has_user():
     """"
@@ -30,9 +32,9 @@ def has_user():
     """
 
     while True:
-        has_user = input("1. Login \n2. Registration\n3. Show Results \nPlease Select one(1/2/3):")
+        has_user = input("1. Login \n2. Registration\n3. Show Results \n\n Please Select one(1/2/3):")
         if(validate_data(has_user)):
-            print("Data is valid!")
+            print('\033[92m Data is valid! \033[0m')
             has_user = int(has_user)
             if(has_user == 1):
                 login()
@@ -73,7 +75,7 @@ def login():
         NID = int(input("Please enter your NID : \n"))
         password = input("Please enter your password : \n")
     
-    print('login secceefully ')
+    print('\n  \033[1m login secceefully \033[0m \n')
     candidates_list()
 
 
@@ -134,7 +136,7 @@ def candidates_list():
     for code, name in zip(candidate_code, candidate_name):
         print(f"Select {code} For {name}")
 
-    selected_candidate = input('which one is your consider candidate? \n')
+    selected_candidate = input('\n which one is your consider candidate? \n')
     # using while for validation,
     while(selected_candidate.upper() not in candidate_code):
         print('Please make sure you select Correctly:\n')
@@ -154,7 +156,7 @@ def vote_count(code):
     """
     votes = vots_work_sheet.col_values(1)
     votes_counts = Counter(votes)
-    print(f"Total vote for {code} is {votes_counts[code]}")
+    print(f"Total vote for {code} is {votes_counts[code]} "'\033[91m'f" ({  round(((votes_counts[code]) * 100) / (len(votes) - 1 ),2) } %) "'\033[0m')
 
 def show_results():
     """
