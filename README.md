@@ -104,4 +104,31 @@ Election System Project has been tested with Gitpod terminal text editor and wor
 
 ## Deployment
 Project Deployment with Heroku
-Here is some steps for delopy
+Here is some steps for delopy Election System via Heroku.
+
+1. Listing all requirement on requirements.txt by using below commend
+```bash
+pip3 freeze > requirements.txt
+``` 
+2. Add, commit and push new changes to GitHub.
+3. Go [Heroku](https://www.heroku.com) on the browser and create an account and login.
+4. Once the account is create/open , go to "New" and look for "Create new app"
+5. Type an App Name(which should be unique on Heroku) and select the local region from dropdown box.
+6. After create App the dashborad will display click on "Setting" tab in the menubar. Scroll down and add "Config Vars" any Sensitive information which not sent to github.
+7. For projects using the Code Institute terminal, another Config Var needs to be added into this section. Enter "PORT" in all capitals into the "Key" field and "8000" into the "Value" field and click the "Add" button.
+8. for using python project "Buildpacks" section click "Add buildpack" and select python and node.js
+9. On the top of the page select Delopy from menu
+10. on Delopy page scroll down to the "Deployment method" section click and select "GitHub" option to connect Heroku to the repository on GitHub. Click "Connect to GitHub", login to Github in the pop-up window if required, otherwise this should be done automatically.
+11. In the 'connect to GitHub' section enter the repository name which your mentioned project exist on GitHub
+12. If the last step was successful the "Deploy" page should change. Scroll down the page to the "Automatic deploys" and "Manual deploy" sections. To enable automatic deploys with each new GitHub push click the "Enable Automatic Deploys" button. To manually deploy click the "Deploy branch" button in the "Manual deploy" section. Ensure the "main"/"master" branch is selected from the drop down menus for both of these options if that is the latest branch of the project.
+13. If deployment is successful a prompt should appear with a "View" button to view the deployed app. Click the button to view the app deployment.
+
+Your site is published at [Election System](https://election-online-system.herokuapp.com/)
+
+## Credits
+The Election System Project developed all by developer. 
+
+## Acknowledgements
+- My Mentor for constant feedback.
+- My Husband Walid Ahmadyar for inspiration, support and useful comments
+    
