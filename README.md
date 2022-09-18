@@ -11,7 +11,7 @@ This system can accept only unique NID, and will not accept duplicate NID while 
 
 After registration complete, users can log in to system by using their NID and password. and system will display the candidate list which comes from Excel sheet (Candidate sheet), after choosing the considered candidate the vote going to save on google sheet (votes sheet), and display the success message.
 
- Link to the live site - [Election System](https://sadafsafi22.github.io/To-do-list/)
+ Link to the live site - [Election System](https://election-online-system.herokuapp.com/)
 
  **September 17, 2022**
 
@@ -79,38 +79,29 @@ Show result option, display the result for all votes, it will display number of 
 ![Election System register national id image](images/result.JPG)
 
 
+## Testing
+The Election has been tested extensively for bugs and errors throughout the development process.
+
+## Validator Tests
+Python project code has been passed through the [PEP8 online python validator tester](http://pep8online.com/). No errors were shown.
+![Election System register national id image](images/testing.JPG)
+
+## Terminal Tests
+Election System Project has been tested with Gitpod terminal text editor and working well with no errors and bugs
+![Election System register national id image](images/testing1.JPG)
 
 
 
+## Technologies
+* [Python](https://www.python.org/) - Python is a programming langauge using for this project.
+* [Heroku](https://www.heroku.com) - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+* [GitPod](https://gitpod.io/) - An open source developer platform for remote development. Used to edit and build the program.
+* [GitHub](https://github.com/) - An online host for web and software development projects. Used to store the repository. Linked to Heroku for automatic deployement with new commits.
+* [Git](https://git-scm.com/) - Software for tracking changes to files. Used with GitPod to add, commit and push code changes to the repository on GitHub. 
+* [patorjk](http://patorjk.com/) - A simple app used to Create text art from words, im using this for create the Election system on first time
+* [dia](http://dia-installer.de/) - Dia is free (open source) drawing software. Sketch your favorite structured diagrams! Windows version available as a free download..
 
 
-
-
-
-
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+## Deployment
+Project Deployment with Heroku
+Here is some steps for delopy
