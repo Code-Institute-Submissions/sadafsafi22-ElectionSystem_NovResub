@@ -82,7 +82,7 @@ def login():
 def registration():
     """ 
     it's registration function, 
-    system register users for voting, and checking for dublicate National ID(NID), 
+    system register users for voting, and checking for duplicate National ID(NID), 
     and age should be older then 18
     """
     print("\n")
@@ -93,13 +93,13 @@ def registration():
     name = input('\nPlease enter your Name:\n')
     nid = int(input('Please enter your own National ID (NID):\n'))
 
-    # checking for dubalicate NID, this system can not Accept dublicate NID
+    # checking for dubalicate NID, this system can not Accept duplicate NID
     saved_nids = users.col_values(2)
     saved_nids.remove('NID')
     int_saved_nids = [int(num) for num in saved_nids]
     # check for dublicate NID
     while(nid in int_saved_nids):
-        print(f'\n \033[1m  Sorry \033[0m , This {nid} NID already registrated, we can not accept dublicate \n')
+        print(f'\n \033[1m  Sorry \033[0m , This {nid} NID already registrated, we can not accept duplicate \n')
         nid = int(input('Please enter your own National ID (NID):\n'))
     
     dob = int(input('Please enter Year of your Birth:\n'))
@@ -156,8 +156,14 @@ def vote_count(code):
     count and display vote for every candidate
     """
     votes = vots_work_sheet.col_values(1)
+    candidate_list = {
+        'A' : 'Donald Trump',
+        'B' : 'Joe Biden',
+        'C' : 'Howie Hawkins',
+        'D' : 'Jo Jordensen'
+    }
     votes_counts = Counter(votes)
-    print(f"Total vote for {code} is {votes_counts[code]} "'\033[91m'f" ({  round(((votes_counts[code]) * 100) / (len(votes) - 1 ),2) } %) "'\033[0m')
+    print(f"Total vote for "'\033[94m'f" {candidate_list[code]}"'\033[0m'f" is {votes_counts[code]} "'\033[91m'f" ({  round(((votes_counts[code]) * 100) / (len(votes) - 1 ),2) } %) "'\033[0m')
 
 def show_results():
     """
