@@ -25,6 +25,7 @@ After registration complete, users can log in to system by using their NID and p
 * [**Registration Option**](<#registration-option>)
 * [**Voting Form**](<#voting-form>)
 * [**Show Result**](<#show-result>)
+* [**Data Model**](<#data-model>)
 * [**Back-end Code Explanation**](<#back-end-code-explanation>)
     * [**welcome_msg Function**](<#back-end-code-explanation>)
     * [**has_user function**](<#back-end-code-explanation>)
@@ -98,16 +99,21 @@ for registration system need Name, National ID(NID), DOB(year) and Password. as 
 ## Voting Form
 After Registering and login to system Successfully, The voting form will display automatically, and candidate list will be shown to user and allow them to select their considerate candidate. as shown in below image.
 
-![Election System register national id image](images/voting.JPG)
+![Election System voting image](images/voting.JPG)
 
 - After selecting the candidate system will display a message and your vote is casted
 
-    ![Election System register national id image](images/voting1.JPG)
+    ![Election System voting id image](images/voting1.JPG)
 
 ## Show Result
 Show result option, display the result for all votes, it will display number of vote for each candidate, show the percentage of votes for each candidate as will
 
-![Election System register national id image](images/result.JPG)
+![Election System result id image](images/result.JPG)
+
+## Data Model
+This is a Diagram for this Election System project, which is darwing on dia Application
+
+![Election System Diagram image](images/election-system-diagram.jpeg)
 
 
 ## Back-end Code Explanation
