@@ -32,9 +32,8 @@ def has_user():
     Login is for those user which already regisrated
     """
     while True:
-        msg = '''1. Login\n2. Registration
-3. Show Results\nPlease Select one(1/2/3):'''
-        has_user = input(msg)
+        has_user = input('''1. Login\n2. Registration
+3. Show Results\nPlease Select one(1/2/3):''')
         if(validate_data(has_user)):
             print('\033[92m Data is valid! \033[0m')
             has_user = int(has_user)
