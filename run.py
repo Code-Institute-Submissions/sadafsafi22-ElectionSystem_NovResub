@@ -33,7 +33,7 @@ def has_user():
     """
     while True:
         has_user = input('''1. Login\n2. Registration
-3. Show Results\nPlease Select one(1/2/3):''')
+3. Show Results\nPlease Select one(1/2/3):''').strip()
         if(validate_data(has_user)):
             print('\033[92m Data is valid! \033[0m')
             has_user = int(has_user)
@@ -50,7 +50,9 @@ def has_user():
 
 def validate_data(data):
     try:
-        if(int(data) not in [1, 2, 3]):
+        if len(data) < 1:
+            raise ValueError(f'System cannot accept white space')
+        elif(int(data) not in [1, 2, 3]):
             raise ValueError(f'You can enter only (1/2/3), you entered {data}')
     except ValueError as e:
         print(f"Invalid data: {e}, Please try again.\n")
@@ -63,9 +65,23 @@ def login():
     Request for user to enter NID and password,
     after checking allow users to go voting section
     """
-    print('Welcome to login section \n')
-    NID = int(input("Please enter NID : \n"))
-    password = input("please enter your Password : \n")
+    print('\033[94m \033[1m \nWelcome to login section\n \033[0m')
+    NID = input("Please enter NID : \n").strip()
+    while True:
+        if len(NID) > 1 and is_integer(NID):
+            break
+        else:
+            print('''\033[91m  Please enter integer we can\'t accept null\ String\n \033[0m''')
+            NID = input("Please enter NID 1: \n").strip()
+
+    password = input("please enter your Password : \n").strip()
+    while True:
+        if len(password) > 1:
+            break
+        else:
+            print('''\033[91m \nPlease enter password correctly \033[0m \n''')
+            password = input("please enter your Password : \n").strip()
+
     NIDs = users.col_values(2)
     NIDs.remove('NID')
     NIDs = [int(num) for num in NIDs]
@@ -76,7 +92,7 @@ def login():
         NID = int(input("Please enter your NID : \n"))
         password = input("Please enter your password : \n")
 
-    print('\n  \033[1m login secceefully \033[0m \n')
+    print('\n \033[94m \033[1m login secceefully \033[0m')
     candidates_list()
 
 
@@ -173,9 +189,7 @@ def vote_count(code):
         'D': 'Jo Jordensen'
     }
     votes_counts = Counter(votes)
-    print(f"""Total vote for """'\033[94m'f"""{candidate_list[code]}"""'\033[0m'f"""
-is {votes_counts[code]} """'\033[91m'f"""({  round(((votes_counts[code]) * 100) / (len(votes) - 1 ),2) } %)
-"""'\033[0m')
+    print(f"""Total vote for """'\033[94m'f"""{candidate_list[code]}"""'\033[0m'f""" is {votes_counts[code]} """'\033[91m'f"""({  round(((votes_counts[code]) * 100) / (len(votes) - 1 ),2) } %)"""'\033[0m')
 
 
 def show_results():
@@ -190,6 +204,14 @@ def show_results():
     print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}\n")
     has_user()
 
+
+def is_integer(n):
+    try:
+        float(n)
+    except ValueError:
+        return False
+    else:
+        return float(n).is_integer()
 
 def main():
     welcome_msg()
