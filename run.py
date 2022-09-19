@@ -10,6 +10,13 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
+CANDIDATE_LIST = {
+    'A': 'Donald Trump',
+    'B': 'Joe Biden',
+    'C': 'Howie Hawkins',
+    'D': 'Jo Jordensen'
+}
+
 C_PATH = Credentials.from_service_account_file('credential-file.json')
 SCOPE_C_PATH = C_PATH.with_scopes(SCOPE)
 GSPREND_CLIENT = gspread.authorize(SCOPE_C_PATH)
@@ -66,32 +73,39 @@ def login():
     after checking allow users to go voting section
     """
     print('\033[94m \033[1m \nWelcome to login section\n \033[0m')
-    NID = input("Please enter NID : \n").strip()
-    while True:
-        if len(NID) > 1 and is_integer(NID):
-            break
-        else:
-            print('''\033[91m  Please enter integer we can\'t accept null\ String\n \033[0m''')
-            NID = input("Please enter NID:\n").strip()
-
-    password = input("please enter your Password : \n").strip()
-    while True:
-        if len(password) > 1:
-            break
-        else:
-            print('''\033[91m \nPlease enter password correctly \033[0m \n''')
-            password = input("please enter your Password : \n").strip()
 
     NIDs = users.col_values(2)
     NIDs.remove('NID')
     NIDs = [int(num) for num in NIDs]
     passwords = users.col_values(4)
-    NID = int(NID)
-    while(not((NID in NIDs) and (password in passwords))):
-        print('''Sorry NID and password incorrect
-        please re-enter for Validation''')
-        NID = int(input("Please enter your NID : \n"))
-        password = input("Please enter your password : \n")
+
+    while True:
+        NID = ""
+        while True:
+            print('\033[93m You can go back by typing Back \033[0m')
+            NID = input("Please enter NID : \n").strip()
+            back_function(NID)
+            if len(NID) > 1 and is_integer(NID):
+                break
+            else:
+                print('''\033[91m Please enter a valid number\n \033[0m''')
+
+        password = ""
+        while True:
+            password = input("please enter your Password : \n").strip()
+            back_function(password)
+            if len(password) > 1:
+                break
+            else:
+                print('''\033[91m \nPlease enter password correctly \033[0m \n''')
+
+
+        NID = int(NID)
+        if(not((NID in NIDs) and (password in passwords))):
+            print('''Sorry details entered are incorrect
+            please re-enter for Validation''')
+        else:
+            break
 
     print('\n \033[94m \033[1m login secceefully \033[0m')
     candidates_list()
@@ -110,9 +124,11 @@ def registration():
     \nName, National ID(NID), DOB(year), Password''')
 
     user = []
+    print('\033[93m You can go back by typing Back \033[0m')
     name = input('\nPlease enter your Name:\n')
+    back_function(name)
     nid = int(input('Please enter your own National ID (NID):\n'))
-
+    back_function(nid)
     # checking for dubalicate NID, this system can not Accept duplicate NID
     saved_nids = users.col_values(2)
     saved_nids.remove('NID')
@@ -123,10 +139,12 @@ def registration():
         This {nid} NID already registrated,
         we can not accept duplicate \n''')
         nid = int(input('Please enter your own National ID (NID):\n'))
+        back_function(nid)
 
     dob = int(input('Please enter Year of your Birth:\n'))
     check_age(dob)
     password = input('Plase enter your Password:\n')
+    back_function(password)
     user.append(name)
     user.append(nid)
     user.append(dob)
@@ -164,11 +182,12 @@ def candidates_list():
         print(f"Select {code} For {name}")
 
     selected_candidate = input('\n which one is your consider candidate? \n')
+    back_function(selected_candidate)
     # using while for validation,
     while(selected_candidate.upper() not in candidate_code):
         print('Please make sure you select Correctly:\n')
         selected_candidate = input('which one is your consider candidate? \n')
-
+        back_function(selected_candidate)
     new_vote = []
     # print(f'you select {selected_candidate}')
     new_vote.append(selected_candidate.upper())
@@ -183,14 +202,11 @@ def vote_count(code):
     count and display vote for every candidate
     """
     votes = vots_work_sheet.col_values(1)
-    candidate_list = {
-        'A': 'Donald Trump',
-        'B': 'Joe Biden',
-        'C': 'Howie Hawkins',
-        'D': 'Jo Jordensen'
-    }
     votes_counts = Counter(votes)
-    print(f"""Total vote for """'\033[94m'f"""{candidate_list[code]}"""'\033[0m'f""" is {votes_counts[code]} """'\033[91m'f"""({  round(((votes_counts[code]) * 100) / (len(votes) - 1 ),2) } %)"""'\033[0m')
+    candidate_name = CANDIDATE_LIST[code]
+    vote_count = votes_counts[code]
+    vote_percentage = round(((votes_counts[code]) * 100) / (len(votes) - 1 ),2)
+    print(f"""Total vote for """'\033[94m'f"""{candidate_name}"""'\033[0m'f""" is {vote_count} """'\033[91m'f"""({ vote_percentage } %)"""'\033[0m')
 
 
 def show_results():
@@ -213,6 +229,14 @@ def is_integer(n):
         return False
     else:
         return float(n).is_integer()
+
+
+def back_function(data):
+    data = data.lower()
+    if(data in ['back', 'exit', 'close']):
+        print('\n')
+        has_user()
+
 
 def main():
     welcome_msg()

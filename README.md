@@ -36,9 +36,12 @@ After registration complete, users can log in to system by using their NID and p
     * [**candidate-list fucntion**](<#back-end-code-explanation>)
     * [**vote_count function**](<#back-end-code-explanation>)
     * [**show_result function**](<#back-end-code-explanation>)
+    * [**is_integer function**](<#is_integer-function>)
+    * [**back_function**](<#back_function>)
 * [**Testing**](<#testing>)
     * [**Validator Tests**](<#validator-tests>)
     * [**Terminal Tests**](<#terminal-tests>)
+    * [**Input Tests**](<#input-tests>)
 * [**Technologies**](<#technologies>)
 * [**Deployment**](<#deployment>)
 * [**Credits**](<#credits>)
@@ -84,17 +87,17 @@ for registration system need Name, National ID(NID), DOB(year) and Password. as 
 
     - if user enter dupicate NID system display " Sorry  , This 99262 NID already registrated, we can not accept duplicate" and ask for new NID and after accepting the new NID it will continue for next input
 
-    ![Election System register national id image](images/register-nid2.JPG)
+    ![Election System register national id2 image](images/register-nid2.JPG)
 
 * DOB(year)
     - On this input we request form user to enter year of their birth, and we check for validation  if they user have more then 18 year old or not, if yes the form will continue for next input, if not the process end and display a msg like the image
 
-    ![Election System register national id image](images/register-nid3.JPG)
+    ![Election System register national id3 image](images/register-nid3.JPG)
 
 * Password
     - The last input for registration is password and it will accept (alphabet and numbers with characters) for password. after entering this registration complete and display message and go for login form
 
-    ![Election System register national id image](images/register-nid4.JPG)
+    ![Election System register national id4 image](images/register-nid4.JPG)
     
 ## Voting Form
 After Registering and login to system Successfully, The voting form will display automatically, and candidate list will be shown to user and allow them to select their considerate candidate. as shown in below image.
@@ -168,6 +171,15 @@ show result function is going to display result of votes and precentage of votes
 
 ![check-age function image](images/show_result.JPG)
 
+### is_integer function
+this function is using for validation check if the input is integer for string
+
+![is_integer function image](images/is_integer.JPG)
+
+### back_function
+back function is using when user type back on terminal and move the program to start function which is has_user function 
+
+![back_function function image](images/back_function.JPG)
 
 ## Testing
 The Election has been tested extensively for bugs and errors throughout the development process.
@@ -175,13 +187,25 @@ The Election has been tested extensively for bugs and errors throughout the deve
 ### Validator Tests
 Python project code has been passed through the [PEP8 online python validator tester](http://pep8online.com/). No errors were shown.
 
-![Election System register national id image](images/testing.JPG)
+![Election System testing image](images/testing.JPG)
 
 ### Terminal Tests
 Election System Project has been tested with Gitpod terminal text editor and working well with no errors and bugs
 
-![Election System register national id image](images/testing1.JPG)
+![Election System  testing1 id image](images/testing1.JPG)
 
+### Input Tests
+we test our program by different inputs for example on main menu(has_user function) we need only 1,2,3 if user type something else the system will not accept that and display an error
+
+![Election System testing3 image](images/testing2.JPG)
+
+login function when system request NID it will not accept white space, String and characters and password as well not accept space
+
+![Election System testing3 image](images/testing3.JPG)
+
+by typing back on every stage of program it move us to has_user function 
+
+![Election System testing3 image](images/testing4.JPG)
 
 
 ## Technologies
