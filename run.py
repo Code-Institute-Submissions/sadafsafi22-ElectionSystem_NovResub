@@ -72,7 +72,7 @@ def login():
             break
         else:
             print('''\033[91m  Please enter integer we can\'t accept null\ String\n \033[0m''')
-            NID = input("Please enter NID 1: \n").strip()
+            NID = input("Please enter NID:\n").strip()
 
     password = input("please enter your Password : \n").strip()
     while True:
@@ -86,6 +86,7 @@ def login():
     NIDs.remove('NID')
     NIDs = [int(num) for num in NIDs]
     passwords = users.col_values(4)
+    NID = int(NID)
     while(not((NID in NIDs) and (password in passwords))):
         print('''Sorry NID and password incorrect
         please re-enter for Validation''')
