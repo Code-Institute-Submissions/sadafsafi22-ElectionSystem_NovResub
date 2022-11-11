@@ -228,6 +228,8 @@ Here is some steps for delopy Election System via Heroku.
 ```bash
 pip3 freeze > requirements.txt
 ``` 
+
+     Creating Credentials for google sheet [Google Sheet Credentials](https://medium.com/@a.marenkov/how-to-get-credentials-for-google-sheets-456b7e88c430)
 2. Add, commit and push new changes to GitHub.
 3. Go [Heroku](https://www.heroku.com) on the browser and create an account and login.
 4. Once the account is create/open , go to "New" and look for "Create new app"

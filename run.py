@@ -132,7 +132,7 @@ def registration():
     while True:
         name = input('\nPlease enter your Name:\n').strip()
         back_function(name)
-        if (len(name) > 0):
+        if (len(name) > 0 and name.isalpha()):
             break
         else:
             print('\033[91m Please Enter a valid Name \033[0m')
