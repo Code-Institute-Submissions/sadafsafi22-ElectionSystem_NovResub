@@ -211,19 +211,20 @@ by typing back on every stage of program it move us to has_user function
 ## Technologies
 * [Python](https://www.python.org/) - Python is a programming langauge using for this project.
 * [Heroku](https://www.heroku.com) - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
-* [GitPod](https://gitpod.io/) - An open source developer platform for remote development. Used to edit and build the program.
-* [GitHub](https://github.com/) - An online host for web and software development projects. Used to store the repository. Linked to Heroku for automatic deployement with new commits.
-* [Git](https://git-scm.com/) - Software for tracking changes to files. Used with GitPod to add, commit and push code changes to the repository on GitHub. 
-* [patorjk](http://patorjk.com/) - A simple app used to Create text art from words, im using this for create the Election system on first time
-* [dia](http://dia-installer.de/) - Dia is free (open source) drawing software. Sketch your favorite structured diagrams! Windows version available as a free download.
-* [Google sheet](https://www.google.com/sheets/about/) - Use Google Sheets to create and edit online spreadsheets. Get insights together with secure sharing in real-time and from any device
+we are using Heroku to make online our website/System.
+* [GitPod](https://gitpod.io/) - An open source developer platform for remote development. Used to edit and build the program. this project is using GitPod for developmenting and coding.
+* [GitHub](https://github.com/) - An online host for web and software development projects. Used to store the repository. Linked to Heroku for automatic deployement with new commits. github is using for storing our project data and shareing with other people. 
+* [Git](https://git-scm.com/) - Software for tracking changes to files. Used with GitPod to add, commit and push code changes to the repository on GitHub.for this project we are using the git to track our development stage
+* [patorjk](http://patorjk.com/) - A simple app used to Create text art from words, im using this for create the Election system on first time display(ELECTION SYSTEM)
+* [dia](http://dia-installer.de/) - Dia is free (open source) drawing software. Sketch your favorite structured diagrams! Windows version available as a free download, we use this appliction for draw our system Diagram which is avalible on README file.
+* [Google sheet](https://www.google.com/sheets/about/) - Use Google Sheets to create and edit online spreadsheets. Get insights together with secure sharing in real-time and from any device, here we use google sheet to store the userdata(registrated student data should store here) and store the votes from every user.
 
 
 ## Deployment
 Project Deployment with Heroku
 Here is some steps for delopy Election System via Heroku.
 
-1. Listing all requirement on requirements.txt by using below commend
+1. Listing all requirement on requirements.txt by using below commend(user should create this requirments)
 ```bash
 pip3 freeze > requirements.txt
 ``` 
