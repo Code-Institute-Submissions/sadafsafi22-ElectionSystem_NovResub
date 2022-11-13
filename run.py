@@ -249,6 +249,7 @@ def vote_count(code):
     vote_percentage = round(((votes_counts[code]) * 100) / (len(votes) - 1), 2)
     print(f"""Total vote for """'\033[94m'f"""{candidate_name}"""'\033[0m'f""" 
     is {vote_count} """'\033[91m'f"""({ vote_percentage } %)"""'\033[0m')
+    print("------------------------------------------------")
 
 
 def show_results():
@@ -262,15 +263,6 @@ def show_results():
     # display total vote from voters
     print(f"Total Vote is {len(vots_work_sheet.col_values(1)) - 1}\n")
     has_user()
-
-
-def is_integer(n):
-    try:
-        float(n)
-    except ValueError:
-        return False
-    else:
-        return float(n).is_integer()
 
 
 def back_function(data):

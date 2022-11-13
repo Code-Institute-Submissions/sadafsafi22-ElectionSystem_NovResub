@@ -149,6 +149,7 @@ login function is using for requesting user to enter NID and Password and checki
 on this function users can register thier self at system
 
 ![registration function image](images/registration-function.JPG)
+![registration function image](images/registration-function1.JPG)
 
 ### check-age function
 check-age function is user to check if the person who's registering have age more then 18 or not, if yes return true if not return false and display a message
@@ -169,11 +170,6 @@ this function get all votes from excel sheet and count them for each candidate a
 show result function is going to display result of votes and precentage of votes for each candidate
 
 ![check-age function image](images/show_result.JPG)
-
-### is_integer function
-this function is using for validation check if the input is integer for string
-
-![is_integer function image](images/is_integer.JPG)
 
 ### back_function
 back function is using when user type back on terminal and move the program to start function which is has_user function 
@@ -202,6 +198,23 @@ login function when system request NID it will not accept white space, String an
 
 ![Election System testing3 image](images/testing3.JPG)
 
+Register function Testing
+1. Name: on this input it ask only for string and cann't accept number and white space for it.
+
+![Election System register Name image](images/test-register-name.JPG)
+
+2. NID : can only accept number.
+
+![Election System register NID image](images/test-register-NID.JPG)
+
+3. Year of Born: this function can accept number and number should be year of born, and check if your age in less then 18 it will forward you on first function 
+
+![Election System register NID image](images/test-register-year.JPG)
+
+4. Password: password can be anything 
+
+![Election System register NID image](images/test-register-password.JPG)
+
 by typing back on every stage of program it move us to has_user function 
 
 ![Election System testing3 image](images/testing4.JPG)
@@ -209,9 +222,8 @@ by typing back on every stage of program it move us to has_user function
 
 ## Technologies
 * [Python](https://www.python.org/) - Python is a programming langauge using for this project.
-* [Heroku](https://www.heroku.com) - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
-we are using Heroku to make online our website/System.
-* [GitPod](https://gitpod.io/) - An open source developer platform for remote development. Used to edit and build the program. this project is using GitPod for developmenting and coding.
+* [Heroku](https://www.heroku.com) - Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud. and we are using this platform for hosting our online system.
+* [GitPod](https://gitpod.io/) - An open source developer platform for remote development. Used to edit and build the program. this project is using GitPod for developmenting and coding and it really make everything easy and simple for developer.
 * [GitHub](https://github.com/) - An online host for web and software development projects. Used to store the repository. Linked to Heroku for automatic deployement with new commits. github is using for storing our project data and shareing with other people. 
 * [Git](https://git-scm.com/) - Software for tracking changes to files. Used with GitPod to add, commit and push code changes to the repository on GitHub.for this project we are using the git to track our development stage
 * [patorjk](http://patorjk.com/) - A simple app used to Create text art from words, im using this for create the Election system on first time display(ELECTION SYSTEM)
@@ -228,19 +240,19 @@ Here is some steps for delopy Election System via Heroku.
 pip3 freeze > requirements.txt
 ``` 
 
-     Creating Credentials for google sheet [Google Sheet Credentials](https://medium.com/@a.marenkov/how-to-get-credentials-for-google-sheets-456b7e88c430)
-2. Add, commit and push new changes to GitHub.
-3. Go [Heroku](https://www.heroku.com) on the browser and create an account and login.
-4. Once the account is create/open , go to "New" and look for "Create new app"
-5. Type an App Name(which should be unique on Heroku) and select the local region from dropdown box.
-6. After create App the dashborad will display click on "Setting" tab in the menubar. Scroll down and add "Config Vars" any Sensitive information which not sent to github.
-7. For projects using the Code Institute terminal, another Config Var needs to be added into this section. Enter "PORT" in all capitals into the "Key" field and "8000" into the "Value" field and click the "Add" button.
-8. for using python project "Buildpacks" section click "Add buildpack" and select python and node.js
-9. On the top of the page select Delopy from menu
-10. on Delopy page scroll down to the "Deployment method" section click and select "GitHub" option to connect Heroku to the repository on GitHub. Click "Connect to GitHub", login to Github in the pop-up window if required, otherwise this should be done automatically.
-11. In the 'connect to GitHub' section enter the repository name which your mentioned project exist on GitHub
-12. If the last step was successful the "Deploy" page should change. Scroll down the page to the "Automatic deploys" and "Manual deploy" sections. To enable automatic deploys with each new GitHub push click the "Enable Automatic Deploys" button. To manually deploy click the "Deploy branch" button in the "Manual deploy" section. Ensure the "main"/"master" branch is selected from the drop down menus for both of these options if that is the latest branch of the project.
-13. If deployment is successful a prompt should appear with a "View" button to view the deployed app. Click the button to view the app deployment.
+2. Creating Credentials for google sheet using this referance [Google Sheet Credentials](https://medium.com/@a.marenkov/how-to-get-credentials-for-google-sheets-456b7e88c430)
+3. Add, commit and push new changes to GitHub.
+4. Go [Heroku](https://www.heroku.com) on the browser and create an account and login.
+5. Once the account is create/open , go to "New" and look for "Create new app"
+6. Type an App Name(which should be unique on Heroku) and select the local region from dropdown box.
+7. After create App the dashborad will display click on "Setting" tab in the menubar. Scroll down and add "Config Vars" any Sensitive information which not sent to github.
+8. For projects using the Code Institute terminal, another Config Var needs to be added into this section. Enter "PORT" in all capitals into the "Key" field and "8000" into the "Value" field and click the "Add" button.
+9. for using python project "Buildpacks" section click "Add buildpack" and select python and node.js
+10. On the top of the page select Delopy from menu
+11. on Delopy page scroll down to the "Deployment method" section click and select "GitHub" option to connect Heroku to the repository on GitHub. Click "Connect to GitHub", login to Github in the pop-up window if required, otherwise this should be done automatically.
+12. In the 'connect to GitHub' section enter the repository name which your mentioned project exist on GitHub
+13. If the last step was successful the "Deploy" page should change. Scroll down the page to the "Automatic deploys" and "Manual deploy" sections. To enable automatic deploys with each new GitHub push click the "Enable Automatic Deploys" button. To manually deploy click the "Deploy branch" button in the "Manual deploy" section. Ensure the "main"/"master" branch is selected from the drop down menus for both of these options if that is the latest branch of the project.
+14. If deployment is successful a prompt should appear with a "View" button to view the deployed app. Click the button to view the app deployment.
 
 Your site is published at [Election System](https://election-online-system.herokuapp.com/)
 
