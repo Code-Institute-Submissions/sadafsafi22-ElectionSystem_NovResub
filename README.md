@@ -240,7 +240,7 @@ Here is some steps for delopy Election System via Heroku.
 pip3 freeze > requirements.txt
 ``` 
 
-2. Creating Credentials for google sheet using this referance [Google Sheet Credentials](https://medium.com/@a.marenkov/how-to-get-credentials-for-google-sheets-456b7e88c430)
+2. Creating Credentials for google sheet using this referance [Google Sheet Credentials](https://mljar.com/blog/authenticate-python-google-sheets-service-account-json-credentials/)
 3. Add, commit and push new changes to GitHub.
 4. Go [Heroku](https://www.heroku.com) on the browser and create an account and login.
 5. Once the account is create/open , go to "New" and look for "Create new app"
@@ -257,7 +257,7 @@ pip3 freeze > requirements.txt
 Your site is published at [Election System](https://election-online-system.herokuapp.com/)
 
 ## Credits
-- Content 
+- Content
     - The Election System Project developed all by developer. 
 - Media
     - The Election System ASCII work-art title in a font called ANSI shadow from [patorjk](http://patorjk.com/)
