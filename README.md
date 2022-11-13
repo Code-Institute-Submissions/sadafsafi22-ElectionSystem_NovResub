@@ -80,7 +80,7 @@ for registration system need Name, National ID(NID), DOB(year) and Password. as 
     ![Election System register name  image](images/register-name.JPG)
 
 * National ID (NID)
-    - National ID has a unique number for everyone, and Election System can not accept duplicate cuz everyone can register their name, only and only a time and can vote for one time.
+    - National ID has a unique number for everyone, and Election System can not accept duplicate becuses everyone can register their name, only and only a time and can vote for one time.
 
     ![Election System register national id image](images/register-nid.JPG)
 
@@ -120,7 +120,7 @@ This is a Diagram for this Election System project, which is darwing on dia Appl
 
 ## Back-end Code Explanation
 
-This is a simple terminal python project, here i want to explain some of my code which written for this project. i'm using google sheet for storing data on excel file it's why import gspread, Credentials, importing datetime cuz i wnat to use date function to calculate age from year of born, importing Counter cuz wanna to display some arry count and importing title_art cuz on that file a create "Election System" with ASCII for the first time runing.
+This is a simple terminal python project, here i want to explain some of my code which written for this project. i'm using google sheet for storing data on excel file it's why import gspread, Credentials, importing datetime becuses i wnat to use date function to calculate age from year of born, importing Counter becuses wanna to display some arry count and importing title_art becuses on that file a create "Election System" with ASCII for the first time runing.
 
 written some code to access the excel file from google sheet.
 we have 3 sheets which are "users" , "candidate" , "votes" as showing in the image we access each sheet by their names.
