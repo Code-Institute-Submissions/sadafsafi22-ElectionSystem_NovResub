@@ -48,13 +48,13 @@ def has_user():
         if (validate_data(has_user)):
             print('\033[92m Data is valid! \033[0m')
             has_user = int(has_user)
-            if (has_user == 1):
+            if has_user == 1:
                 login()
                 break
-            elif (has_user == 2):
+            elif has_user == 2:
                 registration()
                 break
-            elif (has_user == 3):
+            elif has_user == 3:
                 show_results()
                 break
 
@@ -285,6 +285,6 @@ def main():
     has_user()
 
 
-# main()
+main()
 
-has_user()
+# has_user()

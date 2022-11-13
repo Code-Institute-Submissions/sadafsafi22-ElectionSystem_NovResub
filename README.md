@@ -54,7 +54,6 @@ After registration complete, users can log in to system by using their NID and p
 
 ## Features
 
-As we know this is a backend program, and we have some functionality,
 - First allows user to select one option
     - Login
     - Registration
@@ -76,7 +75,7 @@ for registration system need Name, National ID(NID), DOB(year) and Password. as 
  ![Election System register image](images/register-1.JPG)
 
 * Name
-    - Election System can accept everything(string and number) for name
+    - Election System can accept everything(string) for name
 
     ![Election System register name  image](images/register-name.JPG)
 
